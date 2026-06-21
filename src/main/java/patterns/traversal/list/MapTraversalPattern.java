@@ -27,7 +27,6 @@ public class MapTraversalPattern {
 
         //Pattern 2: keySet()
         for (Integer key : map.keySet()) {
-
             System.out.println(
                     key + " " + map.get(key));
         }
