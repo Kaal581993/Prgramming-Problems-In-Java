@@ -3,9 +3,9 @@ package patterns.traversal.list.index_aware_traversal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FindFirstOccurrence {
-    public static void main(String[] args) {
+public class FindLastOccurrence {
 
+    public static void main(String[] args) {
         int[] arr = {10,20,30,20,50};
 
         List<Integer> arrayList = new ArrayList<>();
@@ -17,8 +17,7 @@ public class FindFirstOccurrence {
         }
 
         System.out.println("The first occurene of the target value: "
-        +target+" is: "+arrayList.indexOf(20));
-
+                +target+" is: "+arrayList.lastIndexOf(20));
 
     }
 }
