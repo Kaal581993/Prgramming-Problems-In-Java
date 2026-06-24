@@ -2,6 +2,9 @@ package patterns.traversal.interview_level;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CountPositiveandNegativeNumbers {
     public static void main(String[] args) {
@@ -42,6 +45,40 @@ public class CountPositiveandNegativeNumbers {
                 +"\n The negative Counter: "+negativeCounter);
 
 
+// Count negative numbers
+        long negativeCount = arrayList.stream()
+                .filter(i -> i < 0)
+                .count();
+
+// Count positive numbers (including zero)
+        long positiveCount = arrayList.stream()
+                .filter(i -> i >= 0)
+                .count();
+
+        System.out.println("Positive = " + positiveCount);
+        System.out.println("Negative = " + negativeCount);
+
+        long negativeCount2 = IntStream.of(arr)
+                .filter(i -> i < 0)
+                .count();
+
+        long positiveCount2 = IntStream.of(arr)
+                .filter(i -> i >= 0)
+                .count();
+
+        System.out.println("Positive = " + positiveCount2);
+        System.out.println("Negative = " + negativeCount2);
+
+
+        // Single pass - more efficient!
+        Map<String, Long> counts = arrayList.stream()
+                .collect(Collectors.groupingBy(
+                        i -> i < 0 ? "Negative" : "Positive",
+                        Collectors.counting()
+                ));
+
+        System.out.println("Positive = " + counts.getOrDefault("Positive", 0L));
+        System.out.println("Negative = " + counts.getOrDefault("Negative", 0L));
 
     }
 }
